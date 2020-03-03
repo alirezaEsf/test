@@ -1,0 +1,137 @@
+{
+  "version": 1,
+  "projects": {
+    "my-ngpro": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/my-ngpro",
+      "sourceRoot": "apps/my-ngpro/src",
+      "prefix": "myworkspace",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/my-ngpro",
+            "index": "apps/my-ngpro/src/index.html",
+            "main": "apps/my-ngpro/src/main.ts",
+            "polyfills": "apps/my-ngpro/src/polyfills.ts",
+            "tsConfig": "apps/my-ngpro/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/my-ngpro/src/favicon.ico",
+              "apps/my-ngpro/src/assets"
+            ],
+            "styles": ["apps/my-ngpro/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/my-ngpro/src/environments/environment.ts",
+                  "with": "apps/my-ngpro/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "my-ngpro:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "my-ngpro:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "my-ngpro:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/my-ngpro/tsconfig.app.json",
+              "apps/my-ngpro/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/my-ngpro/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/my-ngpro/jest.config.js",
+            "tsConfig": "apps/my-ngpro/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/my-ngpro/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "my-ngpro-e2e": {
+      "root": "apps/my-ngpro-e2e",
+      "sourceRoot": "apps/my-ngpro-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/my-ngpro-e2e/cypress.json",
+            "tsConfig": "apps/my-ngpro-e2e/tsconfig.e2e.json",
+            "devServerTarget": "my-ngpro:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "my-ngpro:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/my-ngpro-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/my-ngpro-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "my-ngpro"
+}
