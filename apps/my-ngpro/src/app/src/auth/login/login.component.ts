@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'myworkspace-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private confirmationService: ConfirmationService,
-              private messageService: MessageService) {
+              private messageService: MessageService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -26,7 +28,13 @@ export class LoginComponent implements OnInit {
 
   loginSubmit() {
     console.log(this.loginForm.value);
-    this.messageService.add({ key:'loginToast',severity: 'error', summary: 'هشدار', detail: 'وارد کردن عنوان الزامی است' });
+    this.messageService.add({
+      key: 'loginToast',
+      severity: 'error',
+      summary: 'هشدار',
+      detail: 'وارد کردن عنوان الزامی است'
+    });
+    this.router.navigate(['home', this.loginForm.controls.username.value]);
   }
 
 }

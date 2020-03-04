@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Route, RouterModule } from '@angular/router';
+import { HomeComponent } from './homePages/home/home.component';
 
 const appRoutes: Route[] = [
-  {path: '', redirectTo: 'auth/login', pathMatch: 'full'},
-  {path: 'auth', loadChildren: () => import('./auth/auth.module').then(a => a.AuthModule)}
+  { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(a => a.AuthModule) },
+  { path: 'home/:username', component: HomeComponent }
   // {
   //   path: 'home', children: [
   //     // {
@@ -28,4 +30,5 @@ const appRoutes: Route[] = [
     RouterModule.forRoot(appRoutes)
   ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
