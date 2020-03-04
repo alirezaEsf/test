@@ -1,24 +1,27 @@
+<p-toast key="loginToast" position="top-center"></p-toast>
 <p-card>
+  <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
   <div class="p-grid">
     <div class="p-col-4">
       <label>username:</label><br/>
-      <input pInputText/>
+      <input pInputText formControlName="username"/>
     </div>
     <div class="p-col-4"></div>
     <div class="p-col-4"></div>
 
     <div class="p-col-4">
       <label>password:</label><br/>
-      <input type="password" pInputText/>
+      <input type="password" pInputText formControlName="password" />
     </div>
     <div class="p-col-4"></div>
     <div class="p-col-4"></div>
 
     <div class="p-col-4">
-      <p-button label="login"></p-button>
+      <p-button label="login" type="submit"></p-button>
     </div>
     <div class="p-col-4"></div>
     <div class="p-col-4"></div>
 
     </div>
+  </form>
 </p-card>
