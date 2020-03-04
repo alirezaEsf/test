@@ -21,7 +21,12 @@
               "apps/my-ngpro/src/favicon.ico",
               "apps/my-ngpro/src/assets"
             ],
-            "styles": ["apps/my-ngpro/src/styles.css"],
+            "styles": [
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeflex/primeflex.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/primeng/resources/primeng.css"
+            ],
             "scripts": []
           },
           "configurations": {
