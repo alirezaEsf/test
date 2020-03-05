@@ -1,0 +1,131 @@
+<!-- SIDE PANEL -->
+<ng-container *ngIf="!avatConfig.layout.sidepanel.hidden && avatConfig.layout.sidepanel.position === 'left'">
+
+    <!-- PANEL CONTENT -->
+
+</ng-container>
+<!-- / SIDE PANEL -->
+
+<div id="main">
+
+    <!-- TOOLBAR: Above -->
+    <ng-container *ngIf="avatConfig.layout.toolbar.position === 'above'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+    </ng-container>
+    <!-- / TOOLBAR: Above -->
+
+    <div id="container-1" class="container">
+
+        <!-- NAVBAR: Left -->
+        <ng-container *ngIf="avatConfig.layout.navbar.position === 'left'">
+            <ng-container *ngTemplateOutlet="leftNavbar"></ng-container>
+        </ng-container>
+        <!-- / NAVBAR: Left -->
+
+        <div id="container-2" class="container">
+
+            <!-- TOOLBAR: Below fixed -->
+            <ng-container *ngIf="avatConfig.layout.toolbar.position === 'below-fixed'">
+                <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+            </ng-container>
+            <!-- / TOOLBAR: Below fixed -->
+
+            <div id="container-3" class="container" >
+
+                <!-- TOOLBAR: Below static -->
+                <ng-container *ngIf="avatConfig.layout.toolbar.position === 'below-static'">
+                    <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+                </ng-container>
+                <!-- / TOOLBAR: Below static -->
+
+                <!-- CONTENT -->
+                <content></content>
+                <!-- / CONTENT -->
+
+                <!-- FOOTER: Below static -->
+                <ng-container *ngIf="avatConfig.layout.footer.position === 'below-static'">
+                    <ng-container *ngTemplateOutlet="footer"></ng-container>
+                </ng-container>
+                <!-- / FOOTER: Below static -->
+
+            </div>
+
+            <!-- FOOTER: Below fixed -->
+            <ng-container *ngIf="avatConfig.layout.footer.position === 'below-fixed'">
+                <ng-container *ngTemplateOutlet="footer"></ng-container>
+            </ng-container>
+            <!-- / FOOTER: Below fixed -->
+
+        </div>
+
+        <!-- NAVBAR: Right -->
+        <ng-container *ngIf="avatConfig.layout.navbar.position === 'right'">
+            <ng-container *ngTemplateOutlet="rightNavbar"></ng-container>
+        </ng-container>
+        <!-- / NAVBAR: Right -->
+
+    </div>
+
+    <!-- FOOTER: Above -->
+    <ng-container *ngIf="avatConfig.layout.footer.position === 'above'">
+        <ng-container *ngTemplateOutlet="footer"></ng-container>
+    </ng-container>
+    <!-- FOOTER: Above -->
+
+</div>
+
+<!-- SIDE PANEL -->
+<ng-container *ngIf="!avatConfig.layout.sidepanel.hidden && avatConfig.layout.sidepanel.position === 'right'">
+
+    <!-- PANEL CONTENT -->
+
+</ng-container>
+<!-- / SIDE PANEL -->
+
+<!-- QUICK PANEL -->
+<avt-sidebar name="quickPanel" position="left" class="quick-panel">
+    <quick-panel></quick-panel>
+</avt-sidebar>
+<!-- / QUICK PANEL -->
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- @ PARTIALS                                                                                            -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- TOOLBAR -->
+<ng-template #toolbar>
+    <toolbar *ngIf="!avatConfig.layout.toolbar.hidden"
+             [ngClass]="avatConfig.layout.toolbar.customBackgroundColor === true ? avatConfig.layout.toolbar.position + ' ' + avatConfig.layout.toolbar.background : avatConfig.layout.toolbar.position">
+    </toolbar>
+</ng-template>
+<!-- / TOOLBAR -->
+
+<!-- FOOTER -->
+<ng-template #footer>
+    <footer *ngIf="!avatConfig.layout.footer.hidden"
+            [ngClass]="avatConfig.layout.footer.customBackgroundColor === true ? avatConfig.layout.footer.position + ' ' + avatConfig.layout.footer.background : avatConfig.layout.footer.position">
+    </footer>
+</ng-template>
+<!-- / FOOTER -->
+
+<!-- LEFT NAVBAR -->
+<ng-template #leftNavbar>
+    <avt-sidebar name="navbar" class="navbar-fuse-sidebar"
+                  [folded]="avatConfig.layout.navbar.folded"
+                  lockedOpen="gt-md"
+                  *ngIf="!avatConfig.layout.navbar.hidden">
+        <navbar [variant]="avatConfig.layout.navbar.variant" class="left-navbar"></navbar>
+    </avt-sidebar>
+</ng-template>
+<!-- / LEFT NAVBAR -->
+
+<!-- RIGHT NAVBAR -->
+<ng-template #rightNavbar>
+    <avt-sidebar name="navbar" position="right" class="navbar-fuse-sidebar"
+                  [folded]="avatConfig.layout.navbar.folded"
+                  lockedOpen="gt-md"
+                  *ngIf="!avatConfig.layout.navbar.hidden">
+        <navbar [variant]="avatConfig.layout.navbar.variant" class="right-navbar"></navbar>
+    </avt-sidebar>
+</ng-template>
+<!-- / RIGHT NAVBAR -->

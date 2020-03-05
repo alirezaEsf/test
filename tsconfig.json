@@ -1,21 +1,29 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
+    "baseUrl": ".",
+    "outDir": "./dist",
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
+    "downlevelIteration": true,
     "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "module": "esnext",
     "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {}
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "@osveh/ui-kit": ["libs/ui-kit/src/index.ts"],
+      "@avat/*": ["libs/avat/src/lib/*"],
+      "@osveh/store-sahba": ["libs/store-sahba/src/index.ts"],
+      "@osveh/store-sahba/cif": ["libs/store-sahba/src/lib/cif/cif.module.ts"],
+      "@osveh/data-kit": ["libs/data-kit/src/index.ts"]
+    },
+    "rootDir": "."
   },
-  "exclude": ["node_modules", "tmp"]
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
 }

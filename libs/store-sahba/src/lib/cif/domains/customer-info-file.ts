@@ -1,0 +1,31 @@
+export  interface CustomerInfoFile {
+
+    nationalCode?:number;
+    address?:string;
+    phoneNo?:number;
+    mobileNo?:number;
+    postalCode?:number;
+    email?:string;
+    phoneNum:number;
+    mobileNum:number;
+    memberNum:number;
+    createUserId?:number;
+    createUnitId:number;
+    identityAlphabeticPart:string;
+    identityNumericPart:number;
+    identitySerial:number;
+    employmentNumber:number;
+    isValid:number;
+    birthDate:string;
+    createChannelId:number;
+    fileId:number;
+    id:number;
+    gender:number;
+    status:number;
+    customerCode:number;
+    utime:string;
+    editDate:string;
+    editUserId:number;
+    customerId:number;
+    createDate:string;
+}

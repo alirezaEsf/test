@@ -9,11 +9,13 @@ import { RouterModule } from '@angular/router';
 import { ButtonModule, CardModule, InputTextModule, ToastModule } from 'primeng';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SahbaStoreModule } from '@osveh/store-sahba';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent],
-  imports: [BrowserAnimationsModule,BrowserModule, AppRoutingModule, RouterModule, CardModule, InputTextModule, ButtonModule, ReactiveFormsModule, ToastModule],
+  imports: [BrowserAnimationsModule, BrowserModule, AppRoutingModule, RouterModule, CardModule, InputTextModule, ButtonModule, ReactiveFormsModule, ToastModule,SahbaStoreModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}
